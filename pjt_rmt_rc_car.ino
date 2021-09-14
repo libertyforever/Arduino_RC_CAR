@@ -16,7 +16,7 @@ void remote_setup(){
 
 void remote_loop(){
   check_remote_input();
-  distribute_remote_input();
+  distributed_remote_input();
   // 원격입력 분배
 }
 
@@ -31,11 +31,15 @@ void check_remote_input(){
 }
 
 enum{
-  GOFWD = 'f';
-  GOBWD = 'b';
-  TURNL = 'l';
-  TURNR = 'r';
-  STOP = 's';  
+  GOFWD = 'f',
+  GOBWD = 'b',
+  TURNL = 'l',
+  TURNR = 'r',
+  STOP = 's',
+  GOFWDL = 'g',
+  GOFWDR = 'i',
+  GOBWDL = 'h',
+  GOBWDR = 'j'  
 }; /*SERIAL*/
 
 char driving_action = STOP;
@@ -45,10 +49,11 @@ void distributed_remote_input(){
   if(remote_input_changed){
     remote_input_changed=false;
 
-    if(remote_input_changed = false;
-
     if(remote_input == GOFWD || remote_input == GOBWD ||
-    remote_input == TURNL || remote_input == TURNR || remote_input == STOP){
+    remote_input == TURNL || remote_input == TURNR || 
+    remote_input == STOP || remote_input == GOFWDL ||
+    remote_input == GOFWDR || remote_input == GOBWDL ||
+    remote_input == GOBWDR ){
       driving_action = remote_input;
       driving_action_changed = true;
     }
